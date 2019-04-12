@@ -34,4 +34,4 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 
-src/firebaseConfig
+src/firebaseConfig.ts
