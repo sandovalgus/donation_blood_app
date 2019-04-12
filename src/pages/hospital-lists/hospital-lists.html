@@ -1,0 +1,22 @@
+
+<ion-header>
+  <ion-navbar color="colour_a">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Centros de salud</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+
+  <ion-list>
+      <ion-item *ngFor="let hosp of hospitals" (click)="openModalHospital(hosp)">
+
+        <h2> {{hosp.name}} - {{hosp.city}}</h2>
+        <p>{{hosp.address}}</p>
+      </ion-item>
+    </ion-list>
+
+
+</ion-content>

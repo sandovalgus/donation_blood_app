@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="colour_a">
+    <ion-title>Perfil</ion-title>
+
+    <ion-buttons start (click)="editProfile()">
+        <button ion-button icon-only>
+          <ion-icon name="ios-create-outline"></ion-icon>
+        </button>
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  
+  
+  <ion-card *ngIf="user">
+    
+    <ion-item >
+  
+        <h2>{{user.nick}}</h2>
+        <p>{{user.email}}</p>
+    </ion-item>
+    
+    <ion-card-content>
+        <ion-item>
+          Nombre:
+          {{user.first_name}}
+        </ion-item>
+        <ion-item>
+          Apellido:
+          {{user.last_name}}
+        </ion-item>
+        <ion-item>
+          Sexo:
+          {{user.gender == 'M'? 'Masculino' : 'Femenino' }}
+        </ion-item>
+        <ion-item>
+          Edad:
+          {{user.age}}
+        </ion-item>
+        <ion-item>
+          Sexo:
+          {{user.bloode_type | uppercase}}
+        </ion-item>
+        <ion-item class="capitalize">
+          Ciudad:
+            {{user.city}}
+        </ion-item>
+    </ion-card-content>
+  
+
+  
+  </ion-card>
+
+</ion-content>

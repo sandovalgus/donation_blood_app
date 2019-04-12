@@ -1,9 +1,16 @@
-<ion-header>
-  <ion-navbar>
+<ion-header >
+  <ion-navbar color="colour_a">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+
+    <ion-buttons start (click)="goProfile()">
+      <button ion-button icon-only>
+        <ion-icon name="contact"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 

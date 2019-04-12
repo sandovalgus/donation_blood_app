@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar color="colour_a">
+    <ion-title>Editar datos basicos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <ion-item >
+    <ion-label floating> Nombre</ion-label> 
+    <ion-input [(ngModel)]="useredit.first_name" type="text"></ion-input>   
+  </ion-item>
+  <ion-item>
+      <ion-label floating> Apellido</ion-label> 
+      <ion-input [(ngModel)]="useredit.last_name" type="text"></ion-input>  
+  </ion-item>
+  <ion-item>
+      <ion-label floating> Edad</ion-label> 
+      <ion-input [(ngModel)]="useredit.age" type="number"></ion-input>  
+  </ion-item>
+
+
+  <ion-list radio-group [(ngModel)]="useredit.gender">
+      <ion-list-header>
+          Sexo
+      </ion-list-header>
+      
+        <ion-item>
+          <ion-label>Masculino</ion-label>
+          <ion-radio value="M"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Femenino</ion-label>
+          <ion-radio value="F"></ion-radio>
+        </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item>
+        <ion-label>Ciudad</ion-label>
+        <ion-select [(ngModel)]="useredit.city">
+          <ion-option value="Encarnacion">Encarnacion</ion-option>
+          <ion-option value="CDE">Ciudad del Este</ion-option>
+          <ion-option value="Villarica">Villarica</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+
+  <ion-list radio-group [(ngModel)]="useredit.bloode_type">
+      <ion-list-header>
+          Tipo de Sangre
+      </ion-list-header>
+      
+        <ion-item>
+          <ion-label>AB+</ion-label>
+          <ion-radio value="ab+"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>AB-</ion-label>
+          <ion-radio value="ab-"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>A+</ion-label>
+          <ion-radio value="a+"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>A-</ion-label>
+          <ion-radio value="a-"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>B+</ion-label>
+          <ion-radio value="b+"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label> B-</ion-label>
+          <ion-radio value="b-"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>O+</ion-label>
+          <ion-radio value="o+"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label> O-</ion-label>
+          <ion-radio value="o-"></ion-radio>
+        </ion-item>
+  </ion-list>
+
+  <button ion-button block (click)="updateUser()" >Guardar</button>
+
+</ion-content>
