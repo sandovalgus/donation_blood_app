@@ -28,6 +28,7 @@ import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { HospitalService } from '../services/hospital.service';
+import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital-detail-modal';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HospitalService } from '../services/hospital.service';
     LoginPage,
     ProfilePage,
     ProfileEditPage,
-    HospitalTabsPage
+    HospitalTabsPage,
+    HospitalDetailModalPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { HospitalService } from '../services/hospital.service';
     LoginPage,
     ProfilePage,
     ProfileEditPage,
-    HospitalTabsPage
+    HospitalTabsPage,
+    HospitalDetailModalPage
   ],
   providers: [
     StatusBar,

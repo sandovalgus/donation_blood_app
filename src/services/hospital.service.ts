@@ -5,12 +5,7 @@ import { Observable } from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
   
-/*
-  Generated class for the UserProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class HospitalService {
  private hospitalCollection: AngularFirestoreCollection<Hospital>;
@@ -19,10 +14,16 @@ export class HospitalService {
   constructor(
                 private firestore: AngularFirestore 
               ) {
-                console.log('welcome service');
-                  this.hospitalCollection = firestore.collection<Hospital>('hospitals');
 
-                  this.hospitals = this.hospitalCollection.snapshotChanges().pipe(
+            }
+
+  
+   getHospitals(){
+
+               console.log('welcome service');
+                  this.hospitalCollection = this.firestore.collection<Hospital>('hospitals');
+
+                return  this.hospitals = this.hospitalCollection.snapshotChanges().pipe(
                     map(actions =>{
                       return actions.map(a=>{
                         const data = a.payload.doc.data();
@@ -30,12 +31,8 @@ export class HospitalService {
                         return {id, ...data};
                       });
                     })
+                    
                   );
-            }
-
-  
-   getHospitals(){
-              return this.hospitals;
             }
 
     // getHospital(id){
