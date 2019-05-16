@@ -22,7 +22,8 @@ export class HospitalListsPage   {
               public navParams: NavParams,
               public hospitalService: HospitalService,
               public modalController: ModalController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController
+              ) {
 
                 
                 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
 import {Hospital} from '../interfaces/hospital';
 import { Observable } from 'rxjs';
@@ -35,10 +35,12 @@ export class HospitalService {
                   );
             }
 
+
     // getHospital(id){
     //   return this.hospitalCollection.doc<Hospital>(id).valueChanges();
     // }
     getHospital(id){
+      this.hospitalCollection = this.firestore.collection<Hospital>('hospitals');
       return this.hospitalCollection.doc<Hospital>(id).valueChanges().pipe(
         take(1),
         map(hosp =>{

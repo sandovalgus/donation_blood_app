@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { HospitalTabsPage } from '../pages/hospital-tabs/hospital-tabs';
+import { CampaignNewPage } from '../pages/campaign-new/campaign-new';
+import { CampaignsListMyPage } from '../pages/campaigns-list-my/campaigns-list-my';
 
 
 @Component({
@@ -28,7 +30,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Login', component: LoginPage },
       { title: 'Profile', component: ProfilePage },
-      { title: 'Hospitales', component: HospitalTabsPage }
+      { title: 'Hospitales', component: HospitalTabsPage },
+      { title: 'Mis Campañas', component: CampaignsListMyPage}
     ];
 
   }

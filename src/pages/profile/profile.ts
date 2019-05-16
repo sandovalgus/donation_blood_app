@@ -23,7 +23,7 @@ export class ProfilePage {
   user: any;
   loader:any;
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public authService: AuthService,
     public userService: UserService,
@@ -33,8 +33,9 @@ export class ProfilePage {
 
 
 ionViewDidLoad() {
+
   this.presentLoading();
-  console.log('ionViewDidLoad ProfilePage');
+  console.log('ionViewDidLoad --2');
   this.authService.getStatus().subscribe(data =>{
     console.log(data.uid);
 
@@ -58,6 +59,38 @@ editProfile(){
   this.navCtrl.push(ProfileEditPage, {
     user: this.user
   });
+}
+
+
+ionViewCanEnter() {
+  console.log('1 - Toc, Toc!!! ¿Puedo pasar? Se lanza antes de que la vista pueda entrar.');
+
+}
+
+
+
+ionViewWillEnter() {
+  console.log('3 - Acabamos de entrar en la página.');
+}
+
+ionViewDidEnter() {
+  console.log('4 - Página completamente cargada y activa.');
+}
+
+ionViewCanLeave() {
+  console.log('5 - Toc, Toc!!! ¿Puedo salir? Se lanza antes de que la vista pueda salir.');
+}
+
+ionViewWillLeave() {
+  console.log('6 - ¿Estás seguro que quieres dejar la página?.');
+}
+
+ionViewDidLeave() {
+  console.log('7 - La página Home2 ha dejado de estar activa.');
+}
+
+ionViewWillUnload() {
+  console.log('8 - Página y eventos destruidos (Este evento no debería saltar.).');
 }
 
 }

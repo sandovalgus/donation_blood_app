@@ -25,10 +25,19 @@ import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { HospitalTabsPage } from '../pages/hospital-tabs/hospital-tabs';
 import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
-import { HospitalService } from '../services/hospital.service';
 import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital-detail-modal';
+import { CampaignNewPage } from '../pages/campaign-new/campaign-new';
+import { CampaignsListMyPage } from '../pages/campaigns-list-my/campaigns-list-my';
+
+// modules
+
+import { CampaignNewPageModule } from '../pages/campaign-new/campaign-new.module';
+import { CampaignsListMyPageModule } from '../pages/campaigns-list-my/campaigns-list-my.module';
+// servicios
+import { CampaignService } from '../services/campaign.service';
+import { AuthService } from '../services/auth.service';
+import { HospitalService } from '../services/hospital.service';
+import { UserService } from '../services/user.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +58,9 @@ import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CampaignNewPageModule,
+    CampaignsListMyPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -60,7 +71,9 @@ import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital
     ProfilePage,
     ProfileEditPage,
     HospitalTabsPage,
-    HospitalDetailModalPage
+    HospitalDetailModalPage,
+    CampaignNewPage,
+    CampaignsListMyPage
   ],
   providers: [
     StatusBar,
@@ -68,6 +81,7 @@ import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital
     AuthService,
     UserService,
     HospitalService,
+    CampaignService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,0 +1,112 @@
+
+<ion-header>
+    <ion-navbar color="colour_a">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      <ion-title>Crear Campaña</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h2>Formulario Campaña Nueva</h2>
+    <form *ngIf="formLoad" [formGroup]="campana" (ngSubmit)="sendForn ()">
+        <ion-list>
+            <ion-item>
+              <ion-label floating> Paciente</ion-label>
+              <ion-input type="text" name="patient" formControlName="patient"></ion-input>		
+            </ion-item>
+            
+            
+            <div radio-group formControlName="sex" name="sex">
+      
+            <ion-row>
+                  <ion-col col-6>
+                    <ion-item>
+                 
+                      <ion-label>Masculino</ion-label>
+                      <ion-radio value="M"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col col-6>
+                    <ion-item>
+      
+                      <ion-label>Femenino</ion-label>
+                      <ion-radio value="F"></ion-radio>
+                    </ion-item>
+                  </ion-col>
+            </ion-row>
+                </div>
+             <hr>
+      
+           <ion-item>
+            <ion-label floating>Que se necesita donar</ion-label>
+              <ion-select name="type_of_donation" formControlName="type_of_donation" interface="action-sheet">
+                <ion-option value="s">Sangre</ion-option>
+                <ion-option value="p">Plaquetas</ion-option>
+                <ion-option value="gr">Globulos rojos</ion-option>
+              
+          </ion-select>
+            </ion-item>
+
+      
+            <ion-item>
+            <ion-label floating>Tipo de sangre</ion-label>
+              <ion-select name="bloode_type" formControlName="bloode_type" interface="action-sheet" >
+                <ion-option value="A+">A+</ion-option>
+                <ion-option value="A-">A-</ion-option>
+                <ion-option value="B+-">B+-</ion-option>
+                <ion-option value="B-">B-</ion-option>
+                <ion-option value="O+">O+</ion-option>
+                <ion-option value="O-">O-</ion-option>
+                <ion-option value="AB+">AB+</ion-option>
+                <ion-option value="AB-">AB-</ion-option>
+              
+              </ion-select>
+            </ion-item>
+      
+
+
+            <ion-item>
+
+                      <ion-label floating>Centro de Salud</ion-label>
+     
+                      <ion-select text-wrap name="hospital_fk" formControlName="hospital_fk" [(ngModel)]="hospitalselect" (ionChange)="changeSelectHospital($event)" interface="action-sheet" >
+                          <ion-option  *ngFor=" let hosp of hospitals" [value]="hosp.id" >{{hosp.name}}</ion-option>
+                       </ion-select>
+            </ion-item>
+
+
+              <ion-item>
+                  <ion-label> Edad</ion-label>
+                  <ion-input formControlName="age" name="age"  ></ion-input>
+                </ion-item>
+      
+              <ion-item>
+              <ion-label	 floating> Cantidad de donantes</ion-label>
+              <ion-textarea type="text" name="number_of_donors" formControlName="number_of_donors"></ion-textarea>		
+            </ion-item>
+      
+            <ion-item>
+            <ion-label floating>Ciudad</ion-label>
+              <ion-select name="city" formControlName="city" interface="action-sheet">
+                <ion-option value="Encarnacion">Encarnacion</ion-option>
+                <ion-option value="Bella Vista">Bella Vista</ion-option>
+                <ion-option value="Ayolas">Ayolas</ion-option>			
+              </ion-select>
+            </ion-item>
+      
+      
+            <ion-item>
+              <ion-label	 floating> Razon por la cual necesita donantes</ion-label>
+              <ion-textarea type="text" name="comment" formControlName="comment"></ion-textarea>		
+            </ion-item>
+   
+            <ion-item>
+              <button *ngIf="status == 'creating'"  ion-button full block  color="primary">Crear Campaña</button>
+              <button *ngIf="status == 'editing'"  ion-button full block  color="primary" >Guardar edicion Campaña</button>
+            </ion-item>
+          </ion-list>		
+      </form>
+</ion-content>
+ 

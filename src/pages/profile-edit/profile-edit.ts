@@ -3,12 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 
-/**
- * Generated class for the ProfileEditPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({

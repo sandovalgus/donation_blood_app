@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-navbar color="colour_a">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Mis Campaña</ion-title>
+
+    <ion-buttons start>
+        <button ion-button icon-only>
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item  *ngFor="let camp of campaigns" (click)="goCampaignDetails(camp.id)" >
+        <ion-avatar item-start>
+            <div class="circle-avatar">SG</div>
+          </ion-avatar>
+      <ion-badge item-end>{{camp.donor_recirved}}</ion-badge>
+
+
+      <h3>{{camp.patient}}</h3>
+      <p>{{camp.hospital_name}} - {{camp.city}}</p>
+    </ion-item>
+  </ion-list>
+
+
+
+  <ion-fab right bottom>
+      <button ion-fab color="light" (click)="newCampaign()"><ion-icon name="add"></ion-icon></button>
+
+    </ion-fab>
+
+</ion-content>

@@ -8,5 +8,6 @@ export interface Hospital {
     website:string;
     address:string;
     description:string;
+    date:Date;
     id?:string;
 }

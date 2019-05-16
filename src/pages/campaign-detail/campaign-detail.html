@@ -1,0 +1,64 @@
+
+  <ion-header>
+  <ion-toolbar color="colour_a">
+    <ion-buttons left (click)="goToListCampaign()">
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title> Campaña</ion-title>
+
+    <ion-buttons end (click)="goEditCampaign()">
+        <button ion-button icon-only>
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding >
+
+
+
+    <ion-grid *ngIf="hospital">
+        <ion-row>
+          <ion-col col-10>
+                  <h3>{{campana.patient}}</h3>
+          </ion-col>
+          <ion-col col-2>
+                  <h2>{{campana.bloode_type}}</h2>
+          </ion-col>
+        </ion-row>
+
+
+      <ion-row>
+          <ion-col col-10>
+                  <h3>{{campana.type_of_donation}}</h3>
+          </ion-col>
+          <ion-col col-2>
+                  <h2>{{campana.number_of_donors}}</h2>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-10>
+                  <h3>{{campana.comment}}</h3>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+      <div  id="map" style=" height:40%;"></div>
+      <ion-card *ngIf="hospital">
+          <ion-item>
+              <ion-icon name="football" item-start large></ion-icon>
+              <h2>{{hospital.name}}</h2>
+              <p>{{hospital.address}} - {{hospital.city}}</p>
+            </ion-item>
+      </ion-card>
+
+
+
+</ion-content>
