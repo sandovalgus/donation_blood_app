@@ -28,6 +28,7 @@ import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
 import { HospitalDetailModalPage } from '../pages/hospital-detail-modal/hospital-detail-modal';
 import { CampaignNewPage } from '../pages/campaign-new/campaign-new';
 import { CampaignsListMyPage } from '../pages/campaigns-list-my/campaigns-list-my';
+import { FilterPage } from '../pages/filter/filter';
 
 // modules
 
@@ -38,6 +39,10 @@ import { CampaignService } from '../services/campaign.service';
 import { AuthService } from '../services/auth.service';
 import { HospitalService } from '../services/hospital.service';
 import { UserService } from '../services/user.service';
+
+
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { FilterPageModule } from '../pages/filter/filter.module';
 
 @NgModule({
   declarations: [
@@ -60,7 +65,8 @@ import { UserService } from '../services/user.service';
     FormsModule,
     ReactiveFormsModule,
     CampaignNewPageModule,
-    CampaignsListMyPageModule
+    CampaignsListMyPageModule,
+    FilterPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,7 +79,8 @@ import { UserService } from '../services/user.service';
     HospitalTabsPage,
     HospitalDetailModalPage,
     CampaignNewPage,
-    CampaignsListMyPage
+    CampaignsListMyPage,
+    FilterPage
   ],
   providers: [
     StatusBar,
@@ -82,6 +89,7 @@ import { UserService } from '../services/user.service';
     UserService,
     HospitalService,
     CampaignService,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
