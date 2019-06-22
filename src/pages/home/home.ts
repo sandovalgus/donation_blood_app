@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform , ModalController} from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
-import { HospitalService } from '../../services/hospital.service';
+// import { HospitalService } from '../../services/hospital.service';
 import { AuthService } from '../../services/auth.service';
 import { Campaign } from '../../interfaces/campaign';
 import { CampaignService } from '../../services/campaign.service';
 import { UserService } from '../../services/user.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { FilterPage } from '../filter/filter';
-import 'rxjs/add/observable/combineLatest';
-import { Observable } from 'rxjs';
+import { CampaignNormalPage } from '../campaign-normal/campaign-normal';
 
 @Component({
   selector: 'page-home',
@@ -71,6 +70,7 @@ export class HomePage {
 
 
   share(data){
+    console.log('share');
     let message:string='Se necesita donantes de sangre ';
     message = message.concat(data.bloode_type);
     message = message.concat(' para *');
@@ -129,7 +129,9 @@ export class HomePage {
         this.loadAllCampaigns();
   }
 
+  goCampaignDetails(id){
+    console.log('ID ----- ', id);
+    this.navCtrl.push(CampaignNormalPage, {campaign_id: id});
+  }
 
 }
-// this.campaignService.startAt.asObservable();
-// this.campaignService.endAt.asObservable();

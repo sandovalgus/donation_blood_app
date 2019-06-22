@@ -2,12 +2,13 @@
 import { Injectable } from '@angular/core';
 import {Campaign} from '../interfaces/campaign';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 import { Observable, BehaviorSubject, combineLatest, Subject } from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class CampaignService {
@@ -22,7 +23,8 @@ startAt = new Subject();
 endAt = new Subject();
 
   constructor(
-                private firestore: AngularFirestore
+                private firestore: AngularFirestore,
+                private afd:AngularFireDatabase
               ) {
                 this.campaignCollection = this.firestore.collection<Campaign>('campaigns');
             }
@@ -45,7 +47,7 @@ endAt = new Subject();
                   );
             }
 
-    getCampaign(id){
+     getCampaign(id){
       this.campaignCollection = this.firestore.collection<Campaign>('campaigns');
       return this.campaignCollection.doc<Campaign>(id).valueChanges().pipe(
         take(1),
@@ -55,6 +57,9 @@ endAt = new Subject();
       })
       );
     }
+
+
+
 
     getCampaignsLimits(limit){
 

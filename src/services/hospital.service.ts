@@ -4,7 +4,7 @@ import {Hospital} from '../interfaces/hospital';
 import { Observable } from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-  
+
 
 @Injectable()
 export class HospitalService {
@@ -12,15 +12,14 @@ export class HospitalService {
  private hospitals: Observable<Hospital[]>;
 
   constructor(
-                private firestore: AngularFirestore 
+                private firestore: AngularFirestore
               ) {
 
             }
 
-  
+
    getHospitals(){
 
-               console.log('welcome service');
                   this.hospitalCollection = this.firestore.collection<Hospital>('hospitals');
 
                 return  this.hospitals = this.hospitalCollection.snapshotChanges().pipe(
@@ -31,14 +30,14 @@ export class HospitalService {
                         return {id, ...data};
                       });
                     })
-                    
+
                   );
             }
 
 
-    // getHospital(id){
-    //   return this.hospitalCollection.doc<Hospital>(id).valueChanges();
-    // }
+
+
+
     getHospital(id){
       this.hospitalCollection = this.firestore.collection<Hospital>('hospitals');
       return this.hospitalCollection.doc<Hospital>(id).valueChanges().pipe(
@@ -62,7 +61,7 @@ export class HospitalService {
       return this.hospitalCollection.doc(id).delete();
     }
 
-            
+
   // create_NewStudent(record) {
   //   return this.firestore.collection('hospitals').add(record);
   // }

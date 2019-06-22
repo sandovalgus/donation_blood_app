@@ -15,21 +15,39 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content >
 
-  <ion-list>
-    <ion-item  *ngFor="let camp of campaigns"  >
-      <button ion-button color="danger" outline (click)="share(camp)">
-        <ion-icon name="share"></ion-icon>
-      </button>
-      <ion-badge item-end>{{camp.donor_recirved}}</ion-badge>
+    <ion-item  *ngFor="let camp of campaigns" not-lines >
 
+      <ion-card (click)="goCampaignDetails(camp.id)">
 
-      <h3>{{camp.patient}}</h3>
-      <p>{{camp.hospital_name}} - {{camp.city}}</p>
-      <p>{{camp.bloode_type}}</p>
+        <ion-card-header>
+            <ion-row>
+                <ion-col>
+                    {{camp.patient}}
+                </ion-col>
+
+                <ion-col align-self-center text-center>
+                    <ion-buttons end   (click)="share(camp)">
+                        <button ion-button clear small color="danger" icon-only>
+                          <ion-icon name="share"></ion-icon>
+                        </button>
+                      </ion-buttons>
+                </ion-col>
+              </ion-row>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>{{camp.hospital_name}} - {{camp.city}}</p>
+          <p>{{camp.bloode_type}}</p>
+        </ion-card-content>
+
+      </ion-card>
     </ion-item>
-  </ion-list>
+
+
+
+
 
 
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">

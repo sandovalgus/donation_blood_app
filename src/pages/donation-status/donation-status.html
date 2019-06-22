@@ -1,0 +1,94 @@
+
+  <ion-header>
+      <ion-navbar color="colour_a">
+        <ion-title>Campaña</ion-title>
+
+        <ion-buttons start *ngIf="! isValid" (click)="alertMensage()">
+            <button ion-button icon-only >
+              <ion-icon name="ios-trash"></ion-icon>
+            </button>
+          </ion-buttons>
+
+      </ion-navbar>
+    </ion-header>
+
+
+  <ion-content padding >
+
+    <ion-chip  *ngIf="isValid" >
+        <ion-icon name="checkmark" color="secondary"></ion-icon>
+      <ion-label >{{msg}}</ion-label>
+    </ion-chip>
+    <ion-chip  *ngIf="! isValid">
+        <ion-icon name="information"  color="danger"></ion-icon>
+      <ion-label >{{msg}}</ion-label>
+    </ion-chip>
+
+    <ion-grid *ngIf="hospital">
+        <ion-row>
+          <ion-col col-8>
+              <div class="patient">
+              <p>{{dataDonation.campaign.patient}}</p>
+
+              </div>
+          </ion-col>
+          <ion-col col-4>
+            <div class="circle">
+                <div class="circle-text">
+                    {{dataDonation.campaign.bloode_type}}
+                </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                    <!-- <ion-icon name="logo-twitter" item-start></ion-icon> -->
+                    Tipo de donacion
+                    <ion-badge item-end color="colour_a" *ngIf="dataDonation.campaign.type_of_donation =='s'">Sangre</ion-badge>
+                    <ion-badge item-end color="colour_a" *ngIf="dataDonation.campaign.type_of_donation =='p'">Plaqueta</ion-badge>
+                    <ion-badge item-end color="colour_a" *ngIf="dataDonation.campaign.type_of_donation =='gr'">Globulos rojos</ion-badge>
+                  </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                  Cantidad necesaria
+                  <ion-badge item-end class="number-donors" >{{dataDonation.campaign.number_of_donors}}</ion-badge>
+                  <ion-icon name="water" item-end color="colour_a" ></ion-icon>
+
+                  </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+              Comentario
+            </ion-card-header>
+            <ion-card-content>
+              <p class="comment">{{dataDonation.campaign.comment}}</p>
+
+            </ion-card-content>
+          </ion-card>
+
+
+      </ion-grid>
+
+      <div  id="map" style=" height:40%;"></div>
+      <ion-card *ngIf="hospital">
+          <ion-item>
+              <ion-icon name="football" item-start large></ion-icon>
+              <h2>{{hospital.name}}</h2>
+              <p>{{hospital.address}} - {{hospital.city}}</p>
+            </ion-item>
+      </ion-card>
+
+      <button ion-button block  [disabled]="isValid" (click)="verifyDonation()">Estoy aqui !</button>
+
+
+
+  </ion-content>

@@ -14,10 +14,10 @@ export class ProfileEditPage {
 
   useredit: User;
   loader:any;
-  
-  
+
+
     constructor(
-                public navCtrl: NavController, 
+                public navCtrl: NavController,
                 public navParams: NavParams,
                 public userService: UserService,
                 public loadingCtrl: LoadingController) {
@@ -27,22 +27,22 @@ export class ProfileEditPage {
       this.useredit =  this.navParams.get('user');
       console.log(this.useredit);
     }
-  
+
     updateUser(){
       console.log(this.useredit);
       this.presentLoading();
       this.userService.updateUser(this.useredit).then((success)=>{
         this.loader.dismiss();
         this.navCtrl.pop();
-  
+
       })
       .catch((error)=>{
         console.log(error);
         this.loader.dismiss();
-  
+
       })
     }
-  
+
     presentLoading() {
       this.loader = this.loadingCtrl.create({
        content: "Guardando..."

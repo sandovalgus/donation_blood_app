@@ -5,12 +5,7 @@ import leaflet from 'leaflet';
 import { HospitalService } from '../../services/hospital.service';
 import { Campaign } from '../../interfaces/campaign';
 import { CampaignService } from '../../services/campaign.service';
-/**
- * Generated class for the CampaignDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -34,14 +29,11 @@ statusPage:boolean = false;
               public loadingCtrl: LoadingController,
               public campaignService: CampaignService
 
-              ) {
-  }
+              ) {  }
 
   ionViewDidLoad() {
 
   }
-
-
 
   loadmap() {
     if(this.map) {
@@ -64,7 +56,6 @@ statusPage:boolean = false;
     marker.bindPopup("<p>Tashi Delek.<p>Delhi</p>");
   }
 
-
   goEditCampaign(){
     this.navCtrl.push('CampaignNewPage',
       {
@@ -74,10 +65,9 @@ statusPage:boolean = false;
         );
   }
 
-
   ionViewDidEnter() {
     this.presentLoading();
-    console.log(' ----');
+
     this.statusPage= false;
     // console.log('1 - Toc, Toc!!! ¿Puedo pasar? Se lanza antes de que la vista pueda entrar.');
     this.campana_id = this.navParams.get('campaign_id');
@@ -106,6 +96,7 @@ statusPage:boolean = false;
    });
    this.loader.present();
  }
+
  goToListCampaign(){
 console.log('Back list');
   this.navCtrl.setRoot("CampaignsListMyPage");

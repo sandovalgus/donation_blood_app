@@ -13,17 +13,14 @@
 
 <ion-content padding>
 
-
-  
-  
   <ion-card *ngIf="user">
-    
+
     <ion-item >
-  
+
         <h2>{{user.nick}}</h2>
         <p>{{user.email}}</p>
     </ion-item>
-    
+
     <ion-card-content>
         <ion-item>
           Nombre:
@@ -42,7 +39,7 @@
           {{user.age}}
         </ion-item>
         <ion-item>
-          Sexo:
+          Grupo Sanguineo:
           {{user.bloode_type | uppercase}}
         </ion-item>
         <ion-item class="capitalize">
@@ -50,9 +47,33 @@
             {{user.city}}
         </ion-item>
     </ion-card-content>
-  
 
-  
   </ion-card>
+
+
+  <ion-card>
+
+    <ion-card-header>
+      Mis donaciones
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item *ngFor="let myDonation of donationMy" (click)="goToDonationVerify(myDonation)">
+            <ion-badge item-end color="danger" *ngIf="myDonation.donationProcess.check == false"  >Pendiente</ion-badge>
+            <ion-badge item-end color="secondary" *ngIf="myDonation.donationProcess.check == true"  >Success</ion-badge>
+          <h2>{{myDonation.campaign.patient}}</h2>
+          <h3>{{myDonation.campaign.hospital_name}}</h3>
+          <p>{{myDonation.campaign.city}}</p>
+        </ion-item>
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+
 
 </ion-content>

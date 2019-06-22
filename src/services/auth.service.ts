@@ -4,7 +4,8 @@ import { auth } from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-	private user: firebase.User;
+  private user: firebase.User;
+  public USER_ID:string ='';
 
 	constructor(public afAuth: AngularFireAuth) {
 		afAuth.authState.subscribe(user => {
@@ -15,9 +16,9 @@ export class AuthService {
 	signInWithEmail(email, password) {
 		console.log('Sign in with email');
 		return this.afAuth.auth.createUserWithEmailAndPassword(email,password);
-                                
+
     }
-    
+
     loginWithEmail(email, password) {
         return this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
@@ -26,7 +27,8 @@ export class AuthService {
         this.afAuth.auth.signOut();
 			}
 		getStatus() {
-				return this.afAuth.authState;
+
+        return this.afAuth.authState;
 			}
 		getCurrent(){
 			return this.afAuth.auth.currentUser.uid;

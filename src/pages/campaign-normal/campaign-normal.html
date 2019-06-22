@@ -1,0 +1,85 @@
+
+<ion-header color="colour_a">
+  <ion-navbar color="colour_a">
+    <ion-title>Campaña</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding >
+
+  <ion-grid *ngIf="hospital">
+      <ion-row>
+        <ion-col col-8>
+            <div class="patient">
+            <p>{{campana.patient}}</p>
+
+            </div>
+        </ion-col>
+        <ion-col col-4>
+          <div class="circle">
+              <div class="circle-text">
+                  {{campana.bloode_type}}
+              </div>
+
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-card>
+          <ion-card-content>
+              <ion-item>
+                  <!-- <ion-icon name="logo-twitter" item-start></ion-icon> -->
+                  Tipo de donacion
+                  <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='s'">Sangre</ion-badge>
+                  <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='p'">Plaqueta</ion-badge>
+                  <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='gr'">Globulos rojos</ion-badge>
+                </ion-item>
+          </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-content>
+              <ion-item>
+                Cantidad necesaria
+                <ion-badge item-end class="number-donors" >{{campana.number_of_donors}}</ion-badge>
+                <ion-icon name="water" item-end color="colour_a" ></ion-icon>
+
+                </ion-item>
+          </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header>
+            Comentario
+          </ion-card-header>
+          <ion-card-content>
+            <p class="comment">{{campana.comment}}</p>
+
+          </ion-card-content>
+        </ion-card>
+
+
+    </ion-grid>
+
+    <div  id="map" style=" height:40%;"></div>
+    <ion-card *ngIf="hospital">
+        <ion-item>
+            <ion-icon name="football" item-start large></ion-icon>
+            <h2>{{hospital.name}}</h2>
+            <p>{{hospital.address}} - {{hospital.city}}</p>
+          </ion-item>
+    </ion-card>
+
+
+
+  <ion-chip  *ngIf="! isValid" color="warning">
+    <ion-icon  name="information-circle"></ion-icon>
+    <ion-label >{{msg}}</ion-label>
+  </ion-chip>
+
+    <button ion-button block color="colour_a" [disabled]="! isValid" (click)="actionDonar()">Quiero Donar</button>
+
+
+
+</ion-content>

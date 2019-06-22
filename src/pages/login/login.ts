@@ -7,12 +7,7 @@ import {User} from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { HomePage } from '../home/home';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @IonicPage()
 @Component({
@@ -27,19 +22,27 @@ export class LoginPage {
   operation: string = 'login';
 
   constructor(
-                public navCtrl: NavController, 
+                public navCtrl: NavController,
                 public navParams: NavParams,
                 public authService:AuthService,
                 public userService: UserService,
-                private toastCtrl: ToastController) {
-                
+                private toastCtrl: ToastController,
+                public storage:LocalstorageService) {
+
                 }
 
  loginWithEmail(){
     let emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if ( emailRegex.test(this.email)){
         this.authService.loginWithEmail(this.email, this.password).then((result)=>{
+          console.log('login ...');
           console.log(result);
+          this.authService.getStatus().subscribe(data =>{
+            console.log('get status ..');
+            console.log(data.uid);
+            this.storage.setStorageUid(data.uid);
+
+          });
           this.navCtrl.setRoot(HomePage);
 
         }).catch((error)=>{
@@ -85,7 +88,7 @@ export class LoginPage {
       console.log(error);
     });
 
-  } 
+  }
 
   toastAlerts(message){
     let toast = this.toastCtrl.create({

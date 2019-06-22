@@ -39,7 +39,8 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  colour_a:   #ef4a52
+  colour_a:   #ef4a52,
+  warning:    #ffc107,
 );
 
 
@@ -87,3 +88,46 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+.circle {
+  width: 66px;
+  height: 66px;
+  position: relative;
+  margin: auto;
+  left: 0;
+  right: 0;
+  /* top: 20px; */
+  bottom: 0;
+  border-radius: 50%;
+  background-color: #ef4a52 !important;
+  // display: inline-block;
+}
+.circle-text {
+  color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+   text-align: center;
+  // width: 200px;
+  top: 17px;
+  // left: 10%;
+  /* bottom: 0; */
+  position: inherit;
+  z-index: 99;
+}
+.patient {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 36px;
+  font-size: medium;
+}
+
+.number-donors{
+  font-size: 20px;
+}
+.comment{
+  font-size: 15px;
+}
+
+
