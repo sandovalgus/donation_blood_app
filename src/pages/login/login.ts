@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
@@ -27,7 +27,8 @@ export class LoginPage {
                 public authService:AuthService,
                 public userService: UserService,
                 private toastCtrl: ToastController,
-                public storage:LocalstorageService) {
+                public storage:LocalstorageService,
+                public events:Events) {
 
                 }
 
@@ -37,6 +38,7 @@ export class LoginPage {
         this.authService.loginWithEmail(this.email, this.password).then((result)=>{
           console.log('login ...');
           console.log(result);
+          this.events.publish('user:loggedin');
           this.authService.getStatus().subscribe(data =>{
             console.log('get status ..');
             console.log(data.uid);

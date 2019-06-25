@@ -6,24 +6,19 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import {map, take} from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-  
+
 
 import {User} from '../interfaces/user';
 
-/*
-  Generated class for the UserProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class UserService {
-  
+
   private userCollection: AngularFirestoreCollection<User>;
   private users: Observable<User[]>;
 
   constructor(
-    private firestore: AngularFirestore 
+    private firestore: AngularFirestore
               ) {
                 this.userCollection = firestore.collection<User>('users');
               }
@@ -41,7 +36,7 @@ export class UserService {
               updateUser(user: User){
                 return this.userCollection.doc(user.id).update(user);
               }
-          
+
               addUser(user: User){
                 return this.userCollection.doc(user.id).set(user);
               }

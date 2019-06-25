@@ -5,7 +5,7 @@
     </button>
     <ion-title>Home</ion-title>
 
-    <ion-buttons start (click)="goProfile()">
+    <ion-buttons start *ngIf="iconViewstatus" (click)="goProfile()">
       <button ion-button icon-only>
         <ion-icon name="contact"></ion-icon>
       </button>

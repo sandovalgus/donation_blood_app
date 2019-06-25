@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { FilterPage } from '../filter/filter';
 import { CampaignNormalPage } from '../campaign-normal/campaign-normal';
+import { LocalstorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'page-home',
@@ -24,6 +25,7 @@ export class HomePage {
     "blood": 'all',
     "hospital": 'all'
   };
+  iconViewstatus:boolean=false;
 
 
 
@@ -35,15 +37,25 @@ export class HomePage {
     public userService: UserService,
     private socialSharing: SocialSharing,
     public platform: Platform,
-    public modalCtrl: ModalController) {
+    public modalCtrl: ModalController,
+    public storage:LocalstorageService) {
 
 
 
   }
 
   ngOnInit(){
-    // this.campaignService.startAt.asObservable();
-    // this.campaignService.endAt.asObservable();
+      this.storage.getStorageUid().then((uid)=>{
+      if(uid ==''){
+        this.iconViewstatus = false;
+        }else{
+          this.iconViewstatus = true;
+        }
+    } )
+    .catch((error)=>{
+      console.log('error recuperando uid localstorage', error);
+   });
+
   }
 
   goProfile(){

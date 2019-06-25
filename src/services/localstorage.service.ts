@@ -21,4 +21,8 @@ export class LocalstorageService {
     });
   }
 
+  removeStorageUid(){
+    this.storage.set('uid', '');
+  }
+
 }
