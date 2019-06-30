@@ -7,26 +7,22 @@
 <ion-content padding>
     <ion-list>
         <ion-item *ngIf="operation === 'register'">
-            <ion-label fixed>Nick</ion-label>
+            <ion-label floating>Nick</ion-label>
             <ion-input type="text" [(ngModel)]="nick"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label fixed>Email</ion-label>
+          <ion-label floating>Email</ion-label>
           <ion-input type="email" [(ngModel)]="email"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label fixed>Password</ion-label>
+          <ion-label floating>Password</ion-label>
           <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
         <ion-item *ngIf="operation === 'register'">
-          <ion-label fixed>Repetir</ion-label>
+          <ion-label floating>Repetir password</ion-label>
           <ion-input type="password" [(ngModel)]="password2"></ion-input>
         </ion-item>
-    
-        <ion-item>
-          <ion-label fixed>Recordarme</ion-label>
-          <ion-checkbox></ion-checkbox>
-        </ion-item>
+
       </ion-list>
 
   <div padding>
@@ -35,6 +31,8 @@
     <hr />
     <button *ngIf="operation === 'login'" ion-button  (click)="loginWithEmail()" block>Ingresar</button>
     <button *ngIf="operation === 'register'" ion-button (click)="registerWithEmail()" block>Registrarse</button>
+
+
 
    </div>
 </ion-content>

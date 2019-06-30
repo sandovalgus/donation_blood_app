@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import { HospitalListsPage } from '../hospital-lists/hospital-lists';
+import { HospitalMapsPage } from '../hospital-maps/hospital-maps';
 
 /**
  * Generated class for the HospitalTabsPage tabs.
@@ -15,8 +17,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class HospitalTabsPage {
 
-  hospitalListsRoot = 'HospitalListsPage'
-  hospitalMapsRoot = 'HospitalMapsPage'
+  hospitalListsRoot = HospitalListsPage
+  hospitalMapsRoot = HospitalMapsPage
 
 
   constructor(public navCtrl: NavController) {}

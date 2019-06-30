@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "384341166286",
+    "firebase_url": "https://sangreguarani-b761f.firebaseio.com",
+    "project_id": "sangreguarani-b761f",
+    "storage_bucket": "sangreguarani-b761f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:384341166286:android:3e258439331bb009",
+        "android_client_info": {
+          "package_name": "io.sangreguarani.tesis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "384341166286-8g21gibdu0enc94qek7ormc3u68c30na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDb7c8L6KY2FGxSqfw_VBpcwcxzZh19ZW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "384341166286-8g21gibdu0enc94qek7ormc3u68c30na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

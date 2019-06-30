@@ -46,12 +46,19 @@ import { HospitalService } from '../services/hospital.service';
 import { UserService } from '../services/user.service';
 import { DonationProcessService } from '../services/donation-process.service';
 import { LocalstorageService } from '../services/localstorage.service';
+import { NotificationsService } from '../services/notifications.service';
 
 // native
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { Geolocation } from '@ionic-native/geolocation';
 import { IonicStorageModule } from '@ionic/storage';
+// import { GooglePlus } from '@ionic-native/google-plus';
+
+import { FCM } from '@ionic-native/fcm';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { HospitalMapsPage } from '../pages/hospital-maps/hospital-maps';
+import { HospitalListsPage } from '../pages/hospital-lists/hospital-lists';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,9 @@ import { IonicStorageModule } from '@ionic/storage';
     ProfileEditPage,
     HospitalTabsPage,
     HospitalDetailModalPage,
-    DonationStatusPage
+    DonationStatusPage,
+    HospitalMapsPage,
+    HospitalListsPage
   ],
   imports: [
     BrowserModule,
@@ -93,7 +102,9 @@ import { IonicStorageModule } from '@ionic/storage';
     CampaignNewPage,
     CampaignsListMyPage,
     FilterPage,
-    DonationStatusPage
+    DonationStatusPage,
+    HospitalMapsPage,
+    HospitalListsPage
   ],
   providers: [
     StatusBar,
@@ -107,6 +118,9 @@ import { IonicStorageModule } from '@ionic/storage';
     Diagnostic,
     Geolocation,
     LocalstorageService,
+    FCM,
+    LocalNotifications,
+    NotificationsService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

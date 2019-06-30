@@ -16,7 +16,7 @@ import { HospitalService } from '../../services/hospital.service';
 export class FilterPage {
 filter:any ={
   "blood": 'all',
-  "hospital": 'all'
+  "hospital": 'all',
 };
 hospitals:any[];
 
@@ -33,6 +33,7 @@ hospitals:any[];
         next: hospital=>{
 
           this.hospitals = hospital;
+          console.log(this.hospitals);
 
         },
         error: err=>{
@@ -45,10 +46,17 @@ hospitals:any[];
 
   searchCampaign(){
     let data = this.filter;
+    console.log(data);
+    if(data.hospital != 'all'){
+
+      data.hospital = this.filter.hospital.id;
+    }
+    console.log(data);
     this.viewCtrl.dismiss(data);
   }
 
   dismiss() {
   }
+
 
 }

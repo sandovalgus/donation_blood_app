@@ -19,28 +19,55 @@
 
     <ion-item  *ngFor="let camp of campaigns" not-lines >
 
-      <ion-card (click)="goCampaignDetails(camp.id)">
+      <ion-card >
 
-        <ion-card-header>
-            <ion-row>
-                <ion-col>
+        <ion-card-header (click)="goCampaignDetails(camp.id)" >
+            <ion-row justify-content-start align-items-start>
+                <ion-col  no-padding text-left>
                     {{camp.patient}}
                 </ion-col>
 
-                <ion-col align-self-center text-center>
-                    <ion-buttons end   (click)="share(camp)">
-                        <button ion-button clear small color="danger" icon-only>
-                          <ion-icon name="share"></ion-icon>
-                        </button>
-                      </ion-buttons>
+              </ion-row>
+
+              <ion-row>
+
+                <ion-col  >
+                    <ion-item>
+                        <ion-icon name="water" item-start color="danger" no-padding ></ion-icon>
+                        <ion-badge  class="number-donors" color="danger">{{camp.bloode_type}}</ion-badge>
+
+                      </ion-item>
                 </ion-col>
+                <ion-col  >
+                    <ion-item>
+
+
+                        <ion-badge  class="number-donors">{{camp.donor_received | number }} / {{camp.number_of_donors}}</ion-badge>
+                      </ion-item>
+                </ion-col>
+
               </ion-row>
         </ion-card-header>
 
-        <ion-card-content>
+        <!-- <ion-card-content (click)="goCampaignDetails(camp.id)">
           <p>{{camp.hospital_name}} - {{camp.city}}</p>
-          <p>{{camp.bloode_type}}</p>
-        </ion-card-content>
+        </ion-card-content> -->
+
+        <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='medkit'></ion-icon>
+                {{camp.hospital_name}}
+              </button>
+            </ion-col>
+
+            <ion-col text-right>
+              <button ion-button clear small color="danger" (click)="share(camp)" icon-start>
+                <ion-icon name='share'></ion-icon>
+
+              </button>
+            </ion-col>
+          </ion-row>
 
       </ion-card>
     </ion-item>
@@ -57,9 +84,9 @@
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
+    <ion-toolbar  text-center>
 
-      <button ion-button (click)="cleanFilter()">Limpiar Filtros</button>
-      <button ion-button (click)="goViewFilter()">filtro</button>
+      <button ion-button round color="colour_a" (click)="cleanFilter()">Limpiar busqueda</button>
+      <button ion-button round color="colour_a" (click)="goViewFilter()">Busqueda</button>
     </ion-toolbar>
   </ion-footer>

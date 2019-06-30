@@ -10,6 +10,12 @@ import { ProfilePage } from '../pages/profile/profile';
 // import { Storage } from '@ionic/storage';
 import { LocalstorageService } from '../services/localstorage.service';
 
+import { FCM, NotificationData } from '@ionic-native/fcm';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
+import { NotificationsService } from '../services/notifications.service';
+import { timer } from 'rxjs/observable/timer';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -19,13 +25,17 @@ export class MyApp {
   rootPage: any = HomePage;
   statusLougOut:boolean=false;
   pages: Array<{title: string, component: any}>;
-
+  showSplash = true; // <-- show animation
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public events:Events,
-    public storage:LocalstorageService) {
+    public storage:LocalstorageService,
+    private fcm:FCM,
+    public localNotifications:LocalNotifications,
+    public notifications: NotificationsService) {
+
     this.initializeApp();
 
 
@@ -85,6 +95,56 @@ export class MyApp {
       // this.statusBar.overlaysWebView(true);
 
       this.splashScreen.hide();
+
+      // begin notifications
+      if (this.platform.is('cordova') || this.platform.is('android')) {
+        // This will only print when on iOS
+        console.log('I am an iOS device!');
+
+
+
+        this.fcm.getToken().then((token: string)=>{
+        console.log('token device', token);
+        this.notifications.saveToken(token).then(succes =>{
+          console.log('save token firestore ');})
+          .catch(e =>{console.log(e);});
+
+        }).catch(error =>{
+          console.log(error);
+        });
+
+      this.fcm.onTokenRefresh().subscribe((token:string)=>{
+        console.log('Token device refresh', token);
+      });
+      this.fcm.onNotification().subscribe((data)=>{
+        if(data.wasTapped){
+          // app segun plano
+          console.log('estamos en segundo plano '+ JSON.stringify(data));
+
+        }else{
+          //  app en primer plano
+            console.log('estamos en primer plano '+ JSON.stringify(data));
+            this.localNotifications.schedule({
+              id: Math.floor((Math.random() * 100) +1 ),
+              title: "Nueva Campaña !",
+              text: "Donar Sangre es donar vida",
+              data:{
+                nombre: "pepe",
+                apellido: "telo"
+              }
+            });
+          }
+        }, error =>{
+          console.log(error);
+        });
+
+        this.localNotifications.on("click").subscribe(resultado =>{
+          console.log(resultado);
+        });
+
+      }
+        //  fin notificaciones
+
     });
   }
 

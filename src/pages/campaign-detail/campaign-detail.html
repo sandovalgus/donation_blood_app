@@ -19,34 +19,57 @@
 
 
 <ion-content padding >
-
-
-
     <ion-grid *ngIf="hospital">
         <ion-row>
-          <ion-col col-10>
-                  <h3>{{campana.patient}}</h3>
+          <ion-col col-8>
+              <div class="patient">
+              <p>{{campana.patient}}</p>
+
+              </div>
           </ion-col>
-          <ion-col col-2>
-                  <h2>{{campana.bloode_type}}</h2>
+          <ion-col col-4>
+            <div class="circle">
+                <div class="circle-text">
+                    {{campana.bloode_type}}
+                </div>
+
+            </div>
           </ion-col>
         </ion-row>
 
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                    <!-- <ion-icon name="logo-twitter" item-start></ion-icon> -->
+                    Tipo de donacion
+                    <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='s'">Sangre</ion-badge>
+                    <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='p'">Plaqueta</ion-badge>
+                    <ion-badge item-end color="colour_a" *ngIf="campana.type_of_donation =='gr'">Globulos rojos</ion-badge>
+                  </ion-item>
+            </ion-card-content>
+        </ion-card>
 
-      <ion-row>
-          <ion-col col-10>
-                  <h3>{{campana.type_of_donation}}</h3>
-          </ion-col>
-          <ion-col col-2>
-                  <h2>{{campana.number_of_donors}}</h2>
-          </ion-col>
-        </ion-row>
+        <ion-card>
+            <ion-card-content>
+                <ion-item>
+                  Cantidad necesaria
+                  <ion-badge item-end class="number-donors" >{{campana.number_of_donors}}</ion-badge>
+                  <ion-icon name="water" item-end color="colour_a" ></ion-icon>
 
-        <ion-row>
-          <ion-col col-10>
-                  <h3>{{campana.comment}}</h3>
-          </ion-col>
-        </ion-row>
+                  </ion-item>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+              Comentario
+            </ion-card-header>
+            <ion-card-content>
+              <p class="comment">{{campana.comment}}</p>
+
+            </ion-card-content>
+          </ion-card>
+
 
       </ion-grid>
 

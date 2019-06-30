@@ -8,6 +8,8 @@ import { UserService } from '../../services/user.service';
 import { HomePage } from '../home/home';
 
 import { LocalstorageService } from '../../services/localstorage.service';
+// import { GooglePlus } from '@ionic-native/google-plus';
+
 
 @IonicPage()
 @Component({
@@ -100,5 +102,9 @@ export class LoginPage {
     });
     toast.present();
   }
+
+  // loginGoogle(){
+  //   this.authService.loginGoogle();
+  // }
 
 }

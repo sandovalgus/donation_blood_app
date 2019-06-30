@@ -5,7 +5,7 @@ export interface Campaign {
     type_of_donation:string;
     age:string;
     number_of_donors:number;
-    donor_recirved:number;
+    donor_received:number;
     city:string;
     comment:string;
     hospital_fk:string;

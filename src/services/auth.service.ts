@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+// import { GooglePlus } from '@ionic-native/google-plus';
 
 @Injectable()
 export class AuthService {
@@ -32,6 +33,23 @@ export class AuthService {
 			}
 		getCurrent(){
 			return this.afAuth.auth.currentUser.uid;
-		}
+    }
+
+    // loginGoogle(){
+    //   this.google.login({
+    //     'webClientId': '384341166286-8g21gibdu0enc94qek7ormc3u68c30na.apps.googleusercontent.com',
+    //     'offline': true,
+    //     'scopes': 'profile email'
+    //   }).then(res=>{
+    //     this.afAuth.auth.signInWithCredential(auth.GoogleAuthProvider.credential(res.idToken)).then(succes=>{
+    //       console.log(succes);
+    //     }).catch(err =>{
+    //       console.log('error login google', err);
+    //     })
+
+    //   })
+
+
+    // }
 
 }
